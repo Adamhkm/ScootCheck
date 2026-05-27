@@ -1,0 +1,15 @@
+{
+    "model_name": "Kukirin G2 Master",
+    "brand": "Kukirin",
+    "maintenance_intervals_km": {
+        "tire_pressure": 150,
+        "stem_screws": 100,
+        "brake_pads_check": 300,
+        "suspension_lubrication": 500,
+        "full_inspection": 1000
+    },
+    "parts_average_price_eur": {
+        "brake_pads": 15,
+        "tire": 35
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "model_name": "Xiaomi M365",
+    "brand": "Xiaomi",
+    "maintenance_intervals_km": {
+        "tire_pressure": 200,
+        "stem_screws": 250,
+        "brake_pads_check": 500,
+        "folding_mechanism_lube": 600,
+        "full_inspection": 1500
+    },
+    "parts_average_price_eur": {
+        "brake_pads": 10,
+        "tire": 25
+    }
+}
