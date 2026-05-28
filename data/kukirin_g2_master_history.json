@@ -1,0 +1,10 @@
+{
+    "tire_pressure": 2200.0,
+    "total_spent": 15.0,
+    "custom_expenses": [
+        {
+            "label": "changement de pneu",
+            "amount": 15.0
+        }
+    ]
+}

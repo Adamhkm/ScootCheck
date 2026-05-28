@@ -1,0 +1,17 @@
+{
+    "total_spent": 75.0,
+    "custom_expenses": [
+        {
+            "label": "changement de pneu",
+            "amount": 30.0
+        },
+        {
+            "label": "caca",
+            "amount": 30.0
+        },
+        {
+            "label": "changment ",
+            "amount": 15.0
+        }
+    ]
+}

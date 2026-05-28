@@ -1,22 +1,30 @@
-def evaluate_maintenance(current_km, intervals):
+def evaluate_maintenance(current_km, intervals, history=None):
     """
-    Compare le kilométrage actuel avec les intervalles du JSON.
-    Retourne un dictionnaire avec le statut de chaque pièce.
+    Compare le kilométrage actuel avec le kilométrage du dernier entretien (historique).
     """
+    if history is None:
+        history = {}
+
     results = {}
     
     for part, interval in intervals.items():
-        # Le modulo donne les km parcourus depuis le dernier entretien "théorique"
-        km_since_last_check = current_km % interval 
+        # Si on n'a pas d'historique, on suppose que le dernier entretien était au km 0
+        last_checked_km = history.get(part, 0)
+        
+        # Le vrai calcul : combien de km parcourus depuis la dernière réparation ?
+        km_since_last_check = current_km - last_checked_km
+        
+        # On évite les bugs si l'utilisateur tape un kilométrage inférieur à l'historique
+        if km_since_last_check < 0:
+            km_since_last_check = 0
+            
         km_remaining = interval - km_since_last_check
         
-        # On calcule un pourcentage d'usure (0.0 = neuf, 1.0 = entretien à faire)
-        wear_ratio = km_since_last_check / interval
-        
-        # On définit les seuils d'alerte
-        if wear_ratio >= 0.90 or km_remaining <= 15:
+        # Les alertes
+        if km_since_last_check >= interval or km_remaining <= 15:
             status = "🔴 URGENT"
-        elif wear_ratio >= 0.75:
+            km_remaining = 0 # On bloque à 0 pour que ce soit plus joli
+        elif (km_since_last_check / interval) >= 0.75:
             status = "🟠 À PRÉVOIR"
         else:
             status = "🟢 OK"
@@ -24,7 +32,8 @@ def evaluate_maintenance(current_km, intervals):
         results[part] = {
             "interval": interval,
             "km_remaining": km_remaining,
-            "status": status
+            "status": status,
+            "last_checked_km": last_checked_km
         }
         
     return results

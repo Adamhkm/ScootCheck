@@ -1,0 +1,12 @@
+{
+    "tire_pressure": 600.0,
+    "stem_screws": 500.0,
+    "total_spent": 30.0,
+    "custom_expenses": [
+        {
+            "label": "changement de pneu",
+            "amount": 30.0
+        }
+    ],
+    "brake_pads_check": 500.0
+}
